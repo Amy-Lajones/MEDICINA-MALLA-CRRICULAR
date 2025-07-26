@@ -7,13 +7,13 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f9;
+      background-color: #e8f4fd;
       margin: 0;
       padding: 1rem;
     }
     h1 {
       text-align: center;
-      color: #34495e;
+      color: #2c3e50;
     }
     .grid {
       display: grid;
@@ -23,19 +23,20 @@
       overflow-x: auto;
     }
     .column {
-      background: #ecf0f1;
+      background: #d6eaf8;
       padding: 0.5rem;
       border-radius: 10px;
       min-width: 200px;
+      border: 1px solid #aed6f1;
     }
     .column h2 {
       text-align: center;
       font-size: 1.1rem;
-      color: #2c3e50;
+      color: #21618c;
     }
     .subject {
       background: #ffffff;
-      border: 1px solid #bdc3c7;
+      border: 1px solid #85c1e9;
       border-radius: 6px;
       padding: 0.4rem;
       margin: 0.4rem 0;
@@ -45,8 +46,8 @@
       transition: background-color 0.2s;
     }
     .subject.locked {
-      background: #e0e0e0;
-      color: #999;
+      background: #d6dbdf;
+      color: #7f8c8d;
       cursor: not-allowed;
     }
     .subject.locked::after {
@@ -55,7 +56,7 @@
       left: 100%;
       top: 50%;
       transform: translateY(-50%);
-      background: #34495e;
+      background: #2e86c1;
       color: white;
       padding: 0.3rem 0.6rem;
       border-radius: 5px;
@@ -67,17 +68,19 @@
       display: block;
     }
     .subject.approved {
-      background-color: #a2d5ab;
+      background-color: #a9dfbf;
       text-decoration: line-through;
+      border-color: #82e0aa;
     }
     .components {
       margin-top: 3rem;
       background-color: #e8f0fe;
       padding: 1rem;
       border-radius: 10px;
+      border: 1px solid #aed6f1;
     }
     .components h2 {
-      color: #1a73e8;
+      color: #1f618d;
     }
     .components ul {
       list-style: none;
@@ -86,14 +89,15 @@
     .components li {
       margin: 0.5rem 0;
       padding: 0.5rem;
-      background: #fff;
-      border: 1px solid #ccc;
+      background: #ffffff;
+      border: 1px solid #85c1e9;
       border-radius: 6px;
       cursor: pointer;
     }
     .components li.approved {
-      background-color: #a2d5ab;
+      background-color: #a9dfbf;
       text-decoration: line-through;
+      border-color: #82e0aa;
     }
   </style>
 </head>
