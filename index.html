@@ -1,281 +1,199 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Malla Curricular Medicina</title>
+  <meta charset="UTF-8">
+  <title>Malla Curricular Medicina UG</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #e8f4fd;
+      background: #f7f9fc;
       margin: 0;
-      padding: 1rem;
+      padding: 20px;
     }
     h1 {
       text-align: center;
-      color: #2c3e50;
+      margin-bottom: 30px;
     }
-    .grid {
+    .malla {
       display: grid;
-      grid-template-columns: repeat(11, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
-      overflow-x: auto;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 15px;
     }
-    .column {
-      background: #d6eaf8;
-      padding: 0.5rem;
+    .semestre {
+      background: #e0e0e0;
       border-radius: 10px;
-      min-width: 200px;
-      border: 1px solid #aed6f1;
+      padding: 10px;
     }
-    .column h2 {
+    .semestre h2 {
       text-align: center;
-      font-size: 1.1rem;
-      color: #21618c;
-    }
-    .subject {
-      background: #ffffff;
-      border: 1px solid #85c1e9;
-      border-radius: 6px;
-      padding: 0.4rem;
-      margin: 0.4rem 0;
-      cursor: pointer;
-      position: relative;
-      user-select: none;
-      transition: background-color 0.2s;
-    }
-    .subject.locked {
-      background: #d6dbdf;
-      color: #7f8c8d;
-      cursor: not-allowed;
-    }
-    .subject.locked::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      left: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #2e86c1;
+      font-size: 1.1em;
+      background: #333;
       color: white;
-      padding: 0.3rem 0.6rem;
+      padding: 5px;
       border-radius: 5px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-      display: none;
     }
-    .subject.locked:hover::after {
-      display: block;
-    }
-    .subject.approved {
-      background-color: #a9dfbf;
-      text-decoration: line-through;
-      border-color: #82e0aa;
-    }
-    .components {
-      margin-top: 3rem;
-      background-color: #e8f0fe;
-      padding: 1rem;
-      border-radius: 10px;
-      border: 1px solid #aed6f1;
-    }
-    .components h2 {
-      color: #1f618d;
-    }
-    .components ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .components li {
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      background: #ffffff;
-      border: 1px solid #85c1e9;
+    .materia {
+      background-color: #dbeeff;
+      border: 1px solid #a0c4ff;
+      margin: 5px 0;
+      padding: 8px;
       border-radius: 6px;
-      cursor: pointer;
+      text-align: center;
+      font-size: 0.9em;
     }
-    .components li.approved {
-      background-color: #a9dfbf;
-      text-decoration: line-through;
-      border-color: #82e0aa;
+    .s1 { background-color: #ffccbc; }
+    .s2 { background-color: #ffe082; }
+    .s3 { background-color: #c5e1a5; }
+    .s4 { background-color: #b2ebf2; }
+    .s5 { background-color: #b39ddb; }
+    .s6 { background-color: #ffecb3; }
+    .s7 { background-color: #f48fb1; }
+    .s8 { background-color: #a5d6a7; }
+    .s9 { background-color: #90caf9; }
+    .s10 { background-color: #ef9a9a; }
+    .extras {
+      margin-top: 40px;
+    }
+    .extra-block {
+      background: #e3f2fd;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    .extra-block h3 {
+      margin-top: 0;
     }
   </style>
 </head>
 <body>
-  <h1>Malla Curricular - Medicina</h1>
-  <div class="grid" id="malla"></div>
 
-  <div class="components">
-    <h2>Componentes Adicionales</h2>
-    <ul id="componentes">
-      <li data-id="comp1">Computación I</li>
-      <li data-id="comp2">Computación II</li>
-      <li data-id="comp3">Computación III</li>
-      <li data-id="ing1">Inglés I</li>
-      <li data-id="ing2">Inglés II</li>
-      <li data-id="ing3">Inglés III</li>
-      <li data-id="ing4">Inglés IV</li>
-      <li data-id="inte">Unidad de integración curricular</li>
-    </ul>
+<h1>Malla Curricular - Medicina (UG)</h1>
+<div class="malla">
+  <div class="semestre">
+    <h2>1.º Semestre</h2>
+    <div class="materia s1">Anatomía I</div>
+    <div class="materia s1">Embriología</div>
+    <div class="materia s1">Biología Celular</div>
+    <div class="materia s1">Histología</div>
+    <div class="materia s1">Biofísica</div>
+    <div class="materia s1">Lenguaje y Comunicación</div>
   </div>
 
-  <script>
-    const subjects = [
-      { id: "1", name: "Anatomía I", semester: 1, prereqs: [] },
-      { id: "2", name: "Embriología", semester: 1, prereqs: [] },
-      { id: "3", name: "Biología Celular", semester: 1, prereqs: [] },
-      { id: "4", name: "Histología", semester: 1, prereqs: [] },
-      { id: "5", name: "Biofísica", semester: 1, prereqs: [] },
-      { id: "6", name: "Lenguaje y Comunicación", semester: 1, prereqs: [] },
-      { id: "7", name: "Anatomía II", semester: 2, prereqs: ["1"] },
-      { id: "8", name: "Biología Molecular", semester: 2, prereqs: ["2","3"] },
-      { id: "9", name: "Neuroanatomía", semester: 2, prereqs: ["1"] },
-      { id: "10", name: "APS y Promoción de Salud", semester: 2, prereqs: [] },
-      { id: "11", name: "Salud Pública I", semester: 2, prereqs: ["3"] },
-      { id: "12", name: "Metodología de la Investigación I", semester: 2, prereqs: ["6"] },
-      { id: "13", name: "Bioquímica I", semester: 3, prereqs: ["8"] },
-      { id: "14", name: "Bacteriología", semester: 3, prereqs: ["8"] },
-      { id: "15", name: "Micología", semester: 3, prereqs: ["8"] },
-      { id: "16", name: "Fisiología I", semester: 3, prereqs: ["4","7","8"] },
-      { id: "17", name: "Parasitología", semester: 3, prereqs: ["8"] },
-      { id: "18", name: "Bioestadística", semester: 3, prereqs: ["12"] },
-      { id: "19", name: "Anatomía Patológica", semester: 4, prereqs: [] },
-      { id: "20", name: "Bioquímica II", semester: 4, prereqs: ["8","13"] },
-      { id: "21", name: "Fisiología II", semester: 4, prereqs: ["16"] },
-      { id: "22", name: "Psicología", semester: 4, prereqs: ["6"] },
-      { id: "23", name: "Virología", semester: 4, prereqs: ["8"] },
-      { id: "24", name: "Bioética", semester: 4, prereqs: ["4"] },
-      { id: "25", name: "Fisiopatología", semester: 5, prereqs: ["21"] },
-      { id: "26", name: "Imagenología", semester: 5, prereqs: ["7"] },
-      { id: "27", name: "Semiología I", semester: 5, prereqs: ["7","21"] },
-      { id: "28", name: "Nutrición", semester: 5, prereqs: ["20","21"] },
-      { id: "29", name: "Epidemiología", semester: 5, prereqs: ["10"] },
-      { id: "30", name: "Metodología de Investigación II", semester: 5, prereqs: ["18"] },
-      { id: "31", name: "Patologías Infecciosas", semester: 6, prereqs: ["14","15","23"] },
-      { id: "32", name: "Farmacología Preclínica", semester: 6, prereqs: ["20","21"] },
-      { id: "33", name: "Semiología II", semester: 6, prereqs: ["27"] },
-      { id: "34", name: "Medicina Legal", semester: 6, prereqs: ["27"] },
-      { id: "35", name: "Inmunología", semester: 6, prereqs: ["8"] },
-      { id: "36", name: "Clínica I", semester: 7, prereqs: ["33"] },
-      { id: "37", name: "Endocrinología", semester: 7, prereqs: ["33"] },
-      { id: "38", name: "Cardiología", semester: 7, prereqs: ["33"] },
-      { id: "39", name: "Psiquiatría", semester: 7, prereqs: ["22"] },
-      { id: "40", name: "Oncología", semester: 7, prereqs: ["33"] },
-      { id: "41", name: "Salud Pública II", semester: 7, prereqs: ["10"] },
-      { id: "42", name: "Farmacología Clínica", semester: 7, prereqs: ["32"] },
-      { id: "43", name: "Clínica II", semester: 8, prereqs: ["36"] },
-      { id: "44", name: "Genética Clínica", semester: 8, prereqs: ["8"] },
-      { id: "45", name: "Hematología", semester: 8, prereqs: ["36"] },
-      { id: "46", name: "Neurología", semester: 8, prereqs: ["36"] },
-      { id: "47", name: "Neumología", semester: 8, prereqs: ["36"] },
-      { id: "48", name: "Salud Familiar y Comunitaria", semester: 8, prereqs: ["10"] },
-      { id: "49", name: "Geriatría", semester: 8, prereqs: ["36"] },
-      { id: "50", name: "Pediatría I", semester: 9, prereqs: ["43"] },
-      { id: "51", name: "Cirugía I", semester: 9, prereqs: ["7"] },
-      { id: "52", name: "Ginecoobstetricia I", semester: 9, prereqs: ["43"] },
-      { id: "53", name: "Dermatología", semester: 9, prereqs: ["43"] },
-      { id: "54", name: "Urología", semester: 9, prereqs: ["43"] },
-      { id: "55", name: "Nefrología", semester: 9, prereqs: ["43"] },
-      { id: "56", name: "Elaboración de Proyectos", semester: 9, prereqs: ["30"] },
-      { id: "57", name: "Pediatría II", semester: 10, prereqs: ["43","50"] },
-      { id: "58", name: "Cirugía II", semester: 10, prereqs: ["51"] },
-      { id: "59", name: "Ginecoobstetricia II", semester: 10, prereqs: ["52"] },
-      { id: "60", name: "Otorrinolaringología", semester: 10, prereqs: ["51"] },
-      { id: "61", name: "Oftalmología", semester: 10, prereqs: ["51"] },
-      { id: "62", name: "Traumatología", semester: 10, prereqs: ["51"] },
-      { id: "63", name: "Internado: Medicina Interna", semester: 11, prereqs: ["57"] },
-      { id: "64", name: "Internado: Cirugía", semester: 11, prereqs: ["58"] },
-      { id: "65", name: "Internado: Ginecoobstetricia", semester: 11, prereqs: ["59"] },
-      { id: "66", name: "Internado: Pediatría", semester: 11, prereqs: ["57"] },
-      { id: "67", name: "Internado: Medicina Comunitaria", semester: 11, prereqs: ["48"] }
-    ];
+  <div class="semestre">
+    <h2>2.º Semestre</h2>
+    <div class="materia s2">Anatomía II</div>
+    <div class="materia s2">Biología Molecular</div>
+    <div class="materia s2">Neuroanatomía</div>
+    <div class="materia s2">APS y Promoción de Salud</div>
+    <div class="materia s2">Salud Pública I</div>
+    <div class="materia s2">Metodología de la Investigación I</div>
+  </div>
 
-    const componentes = [
-      { id: "comp1", name: "Computación I" },
-      { id: "comp2", name: "Computación II" },
-      { id: "comp3", name: "Computación III" },
-      { id: "ing1", name: "Inglés I" },
-      { id: "ing2", name: "Inglés II" },
-      { id: "ing3", name: "Inglés III" },
-      { id: "ing4", name: "Inglés IV" },
-      { id: "inte", name: "Unidad de integración curricular" }
-    ];
+  <div class="semestre">
+    <h2>3.º Semestre</h2>
+    <div class="materia s3">Bioquímica I</div>
+    <div class="materia s3">Bacteriología</div>
+    <div class="materia s3">Micología</div>
+    <div class="materia s3">Fisiología I</div>
+    <div class="materia s3">Parasitología</div>
+    <div class="materia s3">Bioestadística</div>
+  </div>
 
-    const approved = new Set(JSON.parse(localStorage.getItem("aprobadas") || "[]"));
+  <div class="semestre">
+    <h2>4.º Semestre</h2>
+    <div class="materia s4">Anatomía Patológica</div>
+    <div class="materia s4">Bioquímica II</div>
+    <div class="materia s4">Fisiología II</div>
+    <div class="materia s4">Psicología</div>
+    <div class="materia s4">Virología</div>
+    <div class="materia s4">Bioética</div>
+  </div>
 
-    function saveProgress() {
-      localStorage.setItem("aprobadas", JSON.stringify([...approved]));
-    }
+  <div class="semestre">
+    <h2>5.º Semestre</h2>
+    <div class="materia s5">Fisiopatología</div>
+    <div class="materia s5">Imagenología</div>
+    <div class="materia s5">Semiología I</div>
+    <div class="materia s5">Nutrición</div>
+    <div class="materia s5">Epidemiología</div>
+    <div class="materia s5">Metodología de Investigación II</div>
+  </div>
 
-    function createMalla() {
-      const container = document.getElementById("malla");
-      for (let i = 1; i <= 11; i++) {
-        const col = document.createElement("div");
-        col.className = "column";
-        const title = document.createElement("h2");
-        title.textContent = `Semestre ${i}`;
-        col.appendChild(title);
+  <div class="semestre">
+    <h2>6.º Semestre</h2>
+    <div class="materia s6">Patologías Infecciosas</div>
+    <div class="materia s6">Farmacología Preclínica</div>
+    <div class="materia s6">Semiología II</div>
+    <div class="materia s6">Medicina Legal</div>
+    <div class="materia s6">Inmunología</div>
+  </div>
 
-        subjects.filter(s => s.semester === i).forEach(subject => {
-          const div = document.createElement("div");
-          div.className = "subject";
-          div.textContent = subject.name;
-          div.dataset.id = subject.id;
+  <div class="semestre">
+    <h2>7.º Semestre</h2>
+    <div class="materia s7">Clínica I</div>
+    <div class="materia s7">Endocrinología</div>
+    <div class="materia s7">Cardiología</div>
+    <div class="materia s7">Psiquiatría</div>
+    <div class="materia s7">Oncología</div>
+    <div class="materia s7">Farmacología Clínica</div>
+    <div class="materia s7">Salud Pública II</div>
+  </div>
 
-          const missing = subject.prereqs.filter(p => !approved.has(p));
-          if (missing.length) {
-            div.classList.add("locked");
-            const missingNames = missing.map(m => {
-              const found = subjects.find(s => s.id === m);
-              return found ? found.name : m;
-            });
-            div.dataset.tooltip = `Falta: ${missingNames.join(", ")}`;
-          } else {
-            if (approved.has(subject.id)) {
-              div.classList.add("approved");
-            }
-            div.addEventListener("click", () => {
-              if (div.classList.contains("approved")) {
-                approved.delete(subject.id);
-                div.classList.remove("approved");
-              } else {
-                approved.add(subject.id);
-                div.classList.add("approved");
-              }
-              saveProgress();
-              location.reload();
-            });
-          }
+  <div class="semestre">
+    <h2>8.º Semestre</h2>
+    <div class="materia s8">Clínica II</div>
+    <div class="materia s8">Genética Clínica</div>
+    <div class="materia s8">Hematología</div>
+    <div class="materia s8">Neurología</div>
+    <div class="materia s8">Neumología</div>
+    <div class="materia s8">Geriatría</div>
+    <div class="materia s8">Salud Familiar y Comunitaria</div>
+  </div>
 
-          col.appendChild(div);
-        });
+  <div class="semestre">
+    <h2>9.º Semestre</h2>
+    <div class="materia s9">Pediatría I</div>
+    <div class="materia s9">Cirugía I</div>
+    <div class="materia s9">Ginecoobstetricia I</div>
+    <div class="materia s9">Dermatología</div>
+    <div class="materia s9">Urología</div>
+    <div class="materia s9">Nefrología</div>
+    <div class="materia s9">Elaboración de Proyectos</div>
+  </div>
 
-        container.appendChild(col);
-      }
-    }
+  <div class="semestre">
+    <h2>10.º Semestre</h2>
+    <div class="materia s10">Pediatría II</div>
+    <div class="materia s10">Cirugía II</div>
+    <div class="materia s10">Ginecoobstetricia II</div>
+    <div class="materia s10">Otorrinolaringología</div>
+    <div class="materia s10">Oftalmología</div>
+    <div class="materia s10">Traumatología</div>
+  </div>
+</div>
 
-    function createComponentes() {
-      const ul = document.getElementById("componentes");
-      ul.querySelectorAll("li").forEach(li => {
-        const id = li.dataset.id;
-        if (approved.has(id)) {
-          li.classList.add("approved");
-        }
-        li.addEventListener("click", () => {
-          if (approved.has(id)) {
-            approved.delete(id);
-            li.classList.remove("approved");
-          } else {
-            approved.add(id);
-            li.classList.add("approved");
-          }
-          saveProgress();
-        });
-      });
-    }
+<!-- COMPONENTES ADICIONALES -->
+<div class="extras">
+  <div class="extra-block">
+    <h3>🖥️ Computación</h3>
+    <div class="materia">Computación I</div>
+    <div class="materia">Computación II <br><small>→ Prerrequisito: Computación I</small></div>
+    <div class="materia">Computación III <br><small>→ Prerrequisito: Computación II</small></div>
+  </div>
 
-    createMalla();
-    createComponentes();
-  </script>
+  <div class="extra-block">
+    <h3>🌐 Inglés</h3>
+    <div class="materia">Inglés I</div>
+    <div class="materia">Inglés II <br><small>→ Prerrequisito: Inglés I</small></div>
+    <div class="materia">Inglés III <br><small>→ Prerrequisito: Inglés II</small></div>
+    <div class="materia">Inglés IV <br><small>→ Prerrequisito: Inglés III</small></div>
+  </div>
+
+  <div class="extra-block">
+    <h3>📚 Unidad de Integración Curricular</h3>
+    <div class="materia">Unidad de Integración Curricular <br><small>→ Prerrequisitos sugeridos: Clínica II, Pediatría I, Ginecoobstetricia I, Cirugía I</small></div>
+  </div>
+</div>
+
 </body>
 </html>
