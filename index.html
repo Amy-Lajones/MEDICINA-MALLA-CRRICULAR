@@ -40,6 +40,12 @@
       border-radius: 6px;
       text-align: center;
       font-size: 0.9em;
+      cursor: pointer;
+    }
+    .materia.bloqueada {
+      background-color: #eeeeee;
+      color: #9e9e9e;
+      cursor: not-allowed;
     }
     .s1 { background-color: #ffccbc; }
     .s2 { background-color: #ffe082; }
@@ -194,6 +200,41 @@
     <div class="materia">Unidad de Integración Curricular <br><small>→ Prerrequisitos sugeridos: Clínica II, Pediatría I, Ginecoobstetricia I, Cirugía I</small></div>
   </div>
 </div>
+
+<script>
+  function updateBloqueos() {
+    document.querySelectorAll('.materia').forEach(m => {
+      const prereq = m.dataset.prereq;
+      if (!prereq) return;
+      const requisitos = prereq.split(',');
+      const aprobadas = JSON.parse(localStorage.getItem('materias_aprobadas') || '[]');
+      const desbloqueada = requisitos.every(r => aprobadas.includes(r));
+      m.classList.toggle('bloqueada', !desbloqueada);
+    });
+  }
+
+  document.querySelectorAll('.materia').forEach(m => {
+    const id = m.dataset.id;
+    const aprobadas = JSON.parse(localStorage.getItem('materias_aprobadas') || '[]');
+    if (id && aprobadas.includes(id)) m.classList.add('aprobada');
+
+    m.addEventListener('click', () => {
+      if (m.classList.contains('bloqueada')) return;
+      if (!id) return;
+
+      const aprobadas = new Set(JSON.parse(localStorage.getItem('materias_aprobadas') || '[]'));
+      if (m.classList.toggle('aprobada')) {
+        aprobadas.add(id);
+      } else {
+        aprobadas.delete(id);
+      }
+      localStorage.setItem('materias_aprobadas', JSON.stringify([...aprobadas]));
+      updateBloqueos();
+    });
+  });
+
+  updateBloqueos();
+</script>
 
 </body>
 </html>
